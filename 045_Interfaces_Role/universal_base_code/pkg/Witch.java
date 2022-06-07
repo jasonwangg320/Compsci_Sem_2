@@ -1,0 +1,36 @@
+package pkg;
+import java.util.Scanner;
+import java.util.Random;
+
+public class Witch implements Role { 
+	public String name; 
+	public int health; 
+	public int attack; 
+	public Random rand = new Random(); 
+	
+	public Witch(){ 
+		name = "default"; 
+		health = rand.nextInt(15) + 1; 
+		attack = rand.nextInt(15) + 1; 
+	} 
+	public Witch(String name){
+		this.name = name; 
+		health = rand.nextInt(15) + 1; 
+		attack = rand.nextInt(15) + 1; 
+	}
+	public void setHealth(int health){
+		this.health = health; 
+	}
+	public int getHealth(){ 
+		return health; 
+	}
+	public String getName(){
+		return name; 
+	}
+	public void attack(Role role){ 
+		this.attack = rand.nextInt(attack - 1) + 1; 
+		role.setHealth(role.getHealth() - attack); 
+		System.out.println("It did " + attack + " damage"); 
+	}
+}
+
